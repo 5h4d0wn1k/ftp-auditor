@@ -85,8 +85,8 @@ test:test123
 ```
 ⚠️  Authorized use only. Test only servers you own/control.
 [+] Anonymous login allowed (remediate).
-[*] admin:password123 -> success
-[*] ftp:ftp -> failed
+[*] admin:password123 -> SUCCESS
+[*] ftp:ftp -> fail/denied
 ```
 
 ## Examples
@@ -108,23 +108,11 @@ python ftp_audit.py \
   --creds common_creds.txt
 ```
 
-### Example 3: Custom Port
+## Safety Features
 
-```bash
-# Check FTP on custom port
-python ftp_audit.py \
-  --host 192.168.1.100 \
-  --port 2121
-```
-
-## Security Findings
-
-### Anonymous Login
-
-If anonymous login is allowed, this is a security vulnerability:
-- **Risk**: Unauthorized access to FTP server
-- **Remediation**: Disable anonymous login
-- **Severity**: High
+- **Target Validation**: Validates host before scanning
+- **Authorized Use Only**: Designed for systems you own or have permission to test
+- **Rate Limiting**: Built-in delays prevent account lockouts
 
 ## Use Cases
 
@@ -137,7 +125,7 @@ If anonymous login is allowed, this is a security vulnerability:
 ⚠️ **IMPORTANT**: This tool is for authorized security testing and educational purposes only. Unauthorized access attempts are illegal.
 
 - Only test FTP servers you own or have explicit written authorization to test
-- Respect rate limits and don't overload target systems
+- Respect account lockout policies
 - Follow responsible disclosure practices
 - Comply with all applicable laws and regulations
 

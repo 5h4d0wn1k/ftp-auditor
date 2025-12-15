@@ -12,6 +12,18 @@ from typing import List, Tuple
 
 
 def load_creds(path: str) -> List[Tuple[str, str]]:
+    """
+    Load credentials from a file.
+    
+    Reads credentials in the format "username:password" from a text file,
+    one credential pair per line. Lines without colons are skipped.
+    
+    Args:
+        path: Path to credentials file.
+        
+    Returns:
+        List of (username, password) tuples.
+    """
     creds: List[Tuple[str, str]] = []
     with open(path, "r", encoding="utf-8", errors="ignore") as f:
         for line in f:
